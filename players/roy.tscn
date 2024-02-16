@@ -1,0 +1,146 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsdjdc3ttrkr"]
+
+[ext_resource type="Script" path="res://players/roy/CharacterBody2D.gd" id="1_e10tv"]
+[ext_resource type="Texture2D" uid="uid://cgylgol3oh6bm" path="res://art/characters.png" id="2_hmlo7"]
+
+[sub_resource type="GDScript" id="GDScript_2jnqx"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_a0c6w"]
+resource_name = "walking"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_m5f3v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_a487h"]
+resource_name = "walk_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 3]
+}
+
+[sub_resource type="Animation" id="Animation_ykvq4"]
+resource_name = "walk_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [27, 29]
+}
+
+[sub_resource type="Animation" id="Animation_2tafq"]
+resource_name = "walk_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [15, 17]
+}
+
+[sub_resource type="Animation" id="Animation_rv40j"]
+resource_name = "walk_top"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [39, 41]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8dss"]
+_data = {
+"RESET": SubResource("Animation_m5f3v"),
+"walk_down": SubResource("Animation_a487h"),
+"walk_left": SubResource("Animation_2tafq"),
+"walk_right": SubResource("Animation_ykvq4"),
+"walk_top": SubResource("Animation_rv40j"),
+"walking": SubResource("Animation_a0c6w")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbs5o"]
+size = Vector2(10, 5)
+
+[node name="roy" type="Node2D"]
+script = SubResource("GDScript_2jnqx")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_e10tv")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_hmlo7")
+hframes = 12
+vframes = 8
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_f8dss")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_vbs5o")
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+zoom = Vector2(3, 3)
