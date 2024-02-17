@@ -1,3 +1,144 @@
-[gd_scene format=3 uid="uid://cfk5qfad8geqw"]
+[gd_scene load_steps=10 format=3 uid="uid://cfk5qfad8geqw"]
+
+[ext_resource type="Texture2D" uid="uid://dajg7pq2wjgy3" path="res://art/basictiles.png" id="1_tktil"]
+[ext_resource type="Script" path="res://addons/gaea/generators/2D/cellular_generator/cellular_generator.gd" id="2_5isgh"]
+[ext_resource type="Script" path="res://addons/gaea/generators/2D/cellular_generator/cellular_generator_settings.gd" id="3_5r585"]
+[ext_resource type="Script" path="res://addons/gaea/tile_info/tile_info.gd" id="4_1m5eo"]
+[ext_resource type="Script" path="res://addons/gaea/renderers/2D/tilemap_gaea_renderer.gd" id="4_7yfjx"]
+
+[sub_resource type="Resource" id="Resource_2qd3h"]
+script = ExtResource("4_1m5eo")
+id = ""
+layer = 0
+
+[sub_resource type="Resource" id="Resource_nvjph"]
+resource_name = "Settings"
+script = ExtResource("3_5r585")
+tile = SubResource("Resource_2qd3h")
+world_size = Vector2i(64, 64)
+noise_density = 0.5
+smooth_iterations = 6
+max_floor_empty_neighbors = 4
+min_empty_neighbors = 3
+modifiers = Array[Resource("res://addons/gaea/modifiers/2D/modifier_2d.gd")]([])
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8nd4x"]
+texture = ExtResource("1_tktil")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+6:11/0 = 0
+7:11/0 = 0
+3:12/0 = 0
+5:12/0 = 0
+6:12/0 = 0
+7:12/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+6:13/0 = 0
+7:13/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_76xms"]
+sources/0 = SubResource("TileSetAtlasSource_8nd4x")
 
 [node name="WorldGen" type="Node2D"]
+
+[node name="CellularGenerator" type="Node" parent="."]
+script = ExtResource("2_5isgh")
+settings = SubResource("Resource_nvjph")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_76xms")
+format = 2
+
+[node name="TilemapGaeaRenderer" type="Node" parent="." node_paths=PackedStringArray("tile_map", "generator")]
+script = ExtResource("4_7yfjx")
+tile_map = NodePath("../TileMap")
+generator = NodePath("../CellularGenerator")

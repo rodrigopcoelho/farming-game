@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfmgpg4hs6rpw"]
+
+[ext_resource type="Texture2D" uid="uid://dajg7pq2wjgy3" path="res://art/basictiles.png" id="1_treg3"]
+
+[node name="trees" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_treg3")
+hframes = 8
+vframes = 15
+frame = 38
