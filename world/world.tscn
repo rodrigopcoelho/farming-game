@@ -1,7 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://c24eyf2itck82"]
+[gd_scene load_steps=3 format=3 uid="uid://c24eyf2itck82"]
 
-[ext_resource type="PackedScene" uid="uid://dsdjdc3ttrkr" path="res://players/roy.tscn" id="1_77aqf"]
+[ext_resource type="PackedScene" uid="uid://dsdjdc3ttrkr" path="res://players/roy/roy.tscn" id="1_77aqf"]
+[ext_resource type="PackedScene" uid="uid://v4s22c1xfgt4" path="res://objects/flint.tscn" id="3_2sr8d"]
 
 [node name="World" type="Node2D"]
 
+[node name="flint" parent="." instance=ExtResource("3_2sr8d")]
+position = Vector2(5827, 5162)
+
 [node name="roy" parent="." instance=ExtResource("1_77aqf")]
+position = Vector2(5730, 5130)

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://v4s22c1xfgt4"]
+
+[ext_resource type="Script" path="res://objects/flint.gd" id="1_nuhmb"]
+[ext_resource type="Texture2D" uid="uid://dr21oy1fogw4c" path="res://art/second/sprites/objects/rock_in_water_01.png" id="2_n3852"]
+[ext_resource type="Resource" uid="uid://5yarnifr2ant" path="res://inventory/items/apple.tres" id="2_r5h0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjwja"]
+
+[node name="flint" type="Node2D"]
+script = ExtResource("1_nuhmb")
+item = ExtResource("2_r5h0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_n3852")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_cjwja")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

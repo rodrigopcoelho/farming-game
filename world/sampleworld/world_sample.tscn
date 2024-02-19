@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh4mhhv02tdte"]
-
-[ext_resource type="PackedScene" path="res://world/sampleworld/mapimapi.tscn" id="1_g3nt5"]
-
-[node name="world simple" type="Node2D"]
-
-[node name="mapimapi" parent="." instance=ExtResource("1_g3nt5")]
