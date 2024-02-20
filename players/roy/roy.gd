@@ -30,3 +30,4 @@ func _physics_process(_delta):
 	
 func collect(item):
 	inv.insert(item)
+	print("roy enviou")

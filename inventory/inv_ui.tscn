@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://drto28qnpu01k"]
+[gd_scene load_steps=6 format=3 uid="uid://drto28qnpu01k"]
 
 [ext_resource type="Script" path="res://inventory/inv_ui.gd" id="1_kmpoy"]
 [ext_resource type="Texture2D" uid="uid://bjmjsrbywwd5g" path="res://art/cozy_farm/ui/inventory.png" id="2_d6200"]
 [ext_resource type="Texture2D" uid="uid://bnug1ttd46kvk" path="res://art/cozy_farm/ui/UI.png" id="3_8mvqj"]
+[ext_resource type="Script" path="res://inventory/hotbargrid.gd" id="3_q8ipx"]
 [ext_resource type="PackedScene" uid="uid://cwwi3yncbrdfp" path="res://inventory/item_display.tscn" id="4_viuuf"]
 
 [node name="inv_ui" type="Control"]
@@ -14,13 +15,53 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kmpoy")
 
-[node name="bar" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+
+[node name="bar" type="Sprite2D" parent="Sprite2D2"]
 position = Vector2(0, 115)
 texture = ExtResource("3_8mvqj")
 region_enabled = true
 region_rect = Rect2(96.33, 111.84, 209.039, 31.4854)
+metadata/_edit_lock_ = true
+
+[node name="GridContainer" type="GridContainer" parent="Sprite2D2"]
+offset_left = -97.0
+offset_top = 107.0
+offset_right = 97.0
+offset_bottom = 127.0
+theme_override_constants/h_separation = 6
+columns = 9
+script = ExtResource("3_q8ipx")
+
+[node name="Panel" parent="Sprite2D2/GridContainer" instance=ExtResource("4_viuuf")]
+layout_mode = 2
+
+[node name="Panel10" parent="Sprite2D2/GridContainer" instance=ExtResource("4_viuuf")]
+layout_mode = 2
+
+[node name="Panel11" parent="Sprite2D2/GridContainer" instance=ExtResource("4_viuuf")]
+layout_mode = 2
+
+[node name="Panel12" parent="Sprite2D2/GridContainer" instance=ExtResource("4_viuuf")]
+layout_mode = 2
+
+[node name="Panel13" parent="Sprite2D2/GridContainer" instance=ExtResource("4_viuuf")]
+layout_mode = 2
+
+[node name="Panel14" parent="Sprite2D2/GridContainer" instance=ExtResource("4_viuuf")]
+layout_mode = 2
+
+[node name="Panel15" parent="Sprite2D2/GridContainer" instance=ExtResource("4_viuuf")]
+layout_mode = 2
+
+[node name="Panel16" parent="Sprite2D2/GridContainer" instance=ExtResource("4_viuuf")]
+layout_mode = 2
+
+[node name="Panel17" parent="Sprite2D2/GridContainer" instance=ExtResource("4_viuuf")]
+layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 
 [node name="menu" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-2.2331, -1)
