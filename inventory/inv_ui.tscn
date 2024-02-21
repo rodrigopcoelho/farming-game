@@ -16,13 +16,14 @@ grow_vertical = 2
 script = ExtResource("1_kmpoy")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 131)
+scale = Vector2(1.32, 1.32)
 
 [node name="bar" type="Sprite2D" parent="Sprite2D2"]
 position = Vector2(0, 115)
 texture = ExtResource("3_8mvqj")
 region_enabled = true
 region_rect = Rect2(96.33, 111.84, 209.039, 31.4854)
-metadata/_edit_lock_ = true
 
 [node name="GridContainer" type="GridContainer" parent="Sprite2D2"]
 offset_left = -97.0
@@ -61,7 +62,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
+scale = Vector2(1.56, 1.55461)
 
 [node name="menu" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-2.2331, -1)

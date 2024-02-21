@@ -129,7 +129,7 @@ position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_vbs5o")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(5, 5)
+zoom = Vector2(2, 2)
 
 [node name="inv_ui" parent="." instance=ExtResource("4_628nh")]
 offset_top = -8.0
